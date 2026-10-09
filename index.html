@@ -5,14 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f766e">
 
+<!-- Browser Tab Icon (Favicon / Logo) -->
+<link rel="icon" type="image/png" href="logo.png">
+
+<!-- Main Hero Image Preload -->
+<link rel="preload" as="image" href="hero.jpg">
+
 <!-- SEO Primary Meta Tags -->
 <title>Panama Vista Villa | Peaceful Coastal Homestay in Panama, Sri Lanka</title>
 <meta name="description" content="Panama Vista Villa - authentic coastal homestay in Panama village, Ampara District, Sri Lanka. Quiet A/C and non-A/C rooms, sandy garden courtyard, 10-15 mins to local surf breaks, and Kumana 4x4 safaris. Book direct on WhatsApp.">
 <meta name="keywords" content="Panama Vista Villa, Panama Sri Lanka hotels, Panama homestay, Panama village Ampara, Arugam Bay surfing stay, Kumana safari villa, Lahugala accommodation, budget villa Panama">
 <meta name="author" content="Panama Vista Villa">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<!-- After you upload the site, replace the URL below with your real domain and un-comment: -->
-<!-- <link rel="canonical" href="https://www.your-domain.com/"> -->
 
 <!-- Geo Tags (Panama village, Lahugala, Ampara District, Eastern Province) -->
 <meta name="geo.region" content="LK-5">
@@ -28,7 +32,6 @@
 <meta property="og:description" content="Book direct with the host family. Spotless A/C rooms, sandy garden veranda, rated 10/10 on Booking.com.">
 <meta property="og:image" content="hero.jpg">
 <meta property="og:image:alt" content="Panama Vista Villa entrance, Panama village, Sri Lanka">
-<!-- Tip: for WhatsApp/Facebook previews to work, make og:image an absolute URL, e.g. https://www.your-domain.com/hero.jpg -->
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -92,13 +95,29 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   body { min-height:100vh; background:var(--bg); color:var(--ink); overflow-x:hidden;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    display:flex; flex-direction:column; align-items:center; }
+    display:flex; flex-direction:column; align-items:center; position:relative; }
   body.no-scroll { overflow:hidden; }
   body::before { content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
     background:
       radial-gradient(480px circle at var(--mx,50%) var(--my,15%), rgba(255,255,255,.85), transparent 70%),
       radial-gradient(60vmax circle at 5% 0%, color-mix(in srgb, var(--a2) 30%, transparent), transparent 60%),
       radial-gradient(55vmax circle at 100% 100%, color-mix(in srgb, var(--a1) 18%, transparent), transparent 60%); }
+
+  /* පිටුවේ මැදට එන ලොකු Watermark Logo එක */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(750px, 85vw);
+    height: min(750px, 85vw);
+    background: url('logo.png') no-repeat center / contain;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+
   .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   :is(.pill,.btn,.fab,.safari-link-btn,.channel-card,.faq-q,.lb-x):focus-visible { outline:3px solid var(--a1); outline-offset:3px; }
 
@@ -132,7 +151,7 @@
   @keyframes out { to { opacity:0; transform:translateX(calc(var(--dir) * -70px)) translateZ(-120px) rotateY(calc(var(--dir) * 26deg)); } }
   @keyframes in { from { opacity:0; transform:translateX(calc(var(--dir) * 70px)) translateZ(-120px) rotateY(calc(var(--dir) * -26deg)); } }
 
-  /* Scroll reveal (cards rise in as they enter the screen) + 3D tilt */
+  /* Scroll reveal + 3D tilt */
   .rise { opacity:0; }
   .rise.shown { opacity:1; animation:rise .8s var(--spring) var(--d,0ms) backwards; }
   @keyframes rise { from { opacity:0; transform:perspective(800px) translateY(32px) translateZ(-60px) rotateX(-36deg); } }
@@ -156,13 +175,31 @@
   .hero-photo { width:100%; aspect-ratio:var(--ar, 3/4); max-height:520px; border-radius:20px; border:2px solid #fff; font-size:80px;
     box-shadow:0 8px 20px rgba(0,0,0,.12); transform:translateZ(18px); transition:aspect-ratio .4s var(--glide); }
   .hero-photo img { object-position:center 22%; }
-  .hero-split-right { display:flex; flex-direction:column; justify-content:center; padding:6px 8px; }
+  .hero-split-right { display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:6px 8px; }
+
+  /* Logo above title (Center) */
+  .brand-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .brand-badge img {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    object-fit: cover;
+  }
+
   h1 { font-size:clamp(24px,4vw,34px); font-weight:800; letter-spacing:-.5px; line-height:1.15; margin-bottom:8px;
     background:linear-gradient(120deg, var(--a1), color-mix(in srgb, var(--a1) 50%, var(--a2)));
-    -webkit-background-clip:text; background-clip:text; color:transparent; }
-  .tagline { font-size:14.5px; color:var(--muted); line-height:1.55; margin-bottom:14px; }
-  .quick { display:flex; flex-direction:column; gap:7px; margin-bottom:18px; }
-  .quick-chip { width:fit-content; max-width:100%; font-size:12.5px; font-weight:600; line-height:1.35; text-align:left; color:var(--a1); background:var(--soft); padding:6px 12px; border-radius:18px; }
+    -webkit-background-clip:text; background-clip:text; color:transparent; width:100%; }
+  .tagline { font-size:14.5px; color:var(--muted); line-height:1.55; margin-bottom:14px; text-align:center; }
+  .quick { display:flex; flex-direction:column; gap:7px; margin-bottom:18px; width:100%; align-items:center; }
+  .quick-chip { width:fit-content; max-width:100%; font-size:12.5px; font-weight:600; line-height:1.35; text-align:center; color:var(--a1); background:var(--soft); padding:6px 12px; border-radius:18px; }
 
   .sec-head { text-align:left; margin:22px 0 12px; }
   .sec-head h3 { font-size:18px; color:var(--a1); margin-bottom:4px; }
@@ -192,7 +229,7 @@
   .bento-item h4 { font-size:14.5px; color:var(--a1); margin-bottom:3px; }
   .bento-item p { font-size:12.5px; color:var(--muted); line-height:1.4; }
 
-  /* Safari banner: solid fallback colour sits under the photo, so it looks right even if kumana.jpg is missing */
+  /* Safari banner */
   .safari-banner { text-align:left; margin:18px 0 24px; padding:24px 20px; border-radius:22px; color:#fff; overflow:hidden;
     background:linear-gradient(135deg, rgba(10,26,22,.86), rgba(22,53,44,.8)), url('kumana.jpg') center 35%/cover no-repeat, #16352c;
     border:1px solid rgba(255,255,255,.25); box-shadow:0 12px 30px rgba(10,26,22,.3); }
@@ -246,7 +283,7 @@
   .faq-a p { padding:0 16px 16px; font-size:13.5px; color:var(--muted); line-height:1.55; }
 
   /* Buttons */
-  .btn-wrap { display:flex; gap:10px; flex-wrap:wrap; }
+  .btn-wrap { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
   .btn { display:inline-flex; align-items:center; gap:8px; padding:12px 22px; font:inherit; font-size:14px; font-weight:600; border:0; border-radius:35px; text-decoration:none; cursor:pointer; user-select:none;
     transition:transform .28s var(--spring), box-shadow .28s var(--glide); }
   .btn-whatsapp { color:#fff; background:linear-gradient(135deg, var(--wa), #0e8f50); box-shadow:0 4px 0 var(--wa-d), 0 9px 18px rgba(23,163,95,.3); }
@@ -328,11 +365,10 @@
 </div>
 
 <script>
-  const phone = "94776457815";                       // +94 77 645 7815
+  const phone = "94776457815";
   const email = "panamavistavilla@gmail.com";
   const wa = msg => `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
   const emoji = { villa:"🏡", rooms:"🛏️", dining:"🍛", vibes:"🌊", book:"🌴" };
-  // Only web links open in a new tab (mailto links must not)
   const ext = href => /^https?:/.test(href) ? ' target="_blank" rel="noopener"' : '';
 
   const links = {
@@ -354,7 +390,7 @@
   const safariPartner = {
     title: "Kumana Wildlife 4x4 Safari",
     desc: "Embark on an authentic private safari into Kumana National Park. Spot leopards, wild tuskers, crocodiles, and thousands of migratory birds with our trusted village family drivers.",
-    siteLink: "",            // add the partner website here when ready
+    siteLink: "https://kumanawildsafari.com",
     inquireMsg: "Hi Panama Vista Villa! I'd like to inquire about arranging a 4x4 Kumana Safari tour during my stay."
   };
 
@@ -515,7 +551,6 @@
   let current = 'villa', timer, io;
   const activePill = () => pills.find(p => p.dataset.key === current);
 
-  // Runs a handler at most once per frame, with the latest event
   const perFrame = fn => { let ev, busy = false;
     return e => { ev = e; if (busy) return; busy = true; requestAnimationFrame(() => { busy = false; fn(ev); }); }; };
 
@@ -527,7 +562,6 @@
     if (instant) { well.offsetWidth; well.style.transition = ''; }
   }
 
-  // Photo loaded: reveal it, and shape the hero frame to the photo (no crop, no blur)
   function fit(img) {
     img.classList.add('ok');
     const box = img.closest('.hero-photo');
@@ -544,6 +578,9 @@
       <div class="hero-split tilt rise">
         <div class="hero-photo pic">${emoji[key]}${imgTag(c.heroImg, c.heroAlt)}</div>
         <div class="hero-split-right">
+          <div class="brand-badge">
+            <img src="logo.png" alt="Panama Vista Villa Logo">
+          </div>
           <h1>${c.title}</h1>
           <p class="tagline">${c.tagline}</p>
           ${c.quick ? `<div class="quick">${c.quick.map(q => `<span class="quick-chip">${q}</span>`).join('')}</div>` : ''}
@@ -601,14 +638,13 @@
 
     stage.innerHTML = h;
     stage.setAttribute('aria-labelledby', 'tab-' + key);
-    stage.querySelectorAll('img').forEach(i => { if (i.complete && i.naturalWidth) fit(i); });   // cached images
+    stage.querySelectorAll('img').forEach(i => { if (i.complete && i.naturalWidth) fit(i); });
     root.dataset.t = key;
     live.textContent = c.title;
     reveal();
     if (!reduce) countUp();
   }
 
-  // Cards rise in, staggered, as they scroll into view
   function reveal() {
     const els = [...stage.querySelectorAll('.rise')];
     io && io.disconnect();
@@ -671,7 +707,7 @@
     const go = e.target.closest('[data-go]');
     if (go) return select(go.dataset.go);
     const q = e.target.closest('.faq-q');
-    if (q) {                                           // FAQ accordion
+    if (q) {
       const item = q.parentElement, open = !item.classList.contains('open');
       item.classList.toggle('open', open);
       q.setAttribute('aria-expanded', open);
@@ -686,7 +722,6 @@
     select(order[(map[e.key] + order.length) % order.length], true);
   });
 
-  /* Swipe between sections */
   let sx = 0, sy = 0;
   main.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
   main.addEventListener('touchend', e => {
@@ -697,7 +732,6 @@
     }
   }, { passive: true });
 
-  /* Photo viewer */
   const lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'),
         lbcap = document.getElementById('lbcap'), lbx = document.getElementById('lbx');
   let lastFocus;
@@ -716,7 +750,6 @@
   lb.addEventListener('click', closeLb);
   addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
 
-  /* Pointer spotlight + 3D tilt (one update per frame) */
   if (!reduce && canHover) {
     addEventListener('pointermove', perFrame(e => {
       document.body.style.setProperty('--mx', e.clientX + 'px');
@@ -737,6 +770,19 @@
       el.classList.remove('live'); el.style.setProperty('--tx', '0deg'); el.style.setProperty('--ty', '0deg');
     });
   }
+
+  /* Background Image Preloader (Tabs මාරු කරද්දී Lag වීම නැති කිරීමට) */
+  const preloadList = [
+    "hero.jpg", "room1.jpg", "guest-dining.jpg", "living.jpg",
+    "guest-welcome.jpg", "garden.jpg", "bath.jpg", "room2.jpg",
+    "veranda.jpg", "breakfast.jpg", "kumana.jpg"
+  ];
+  window.addEventListener('load', () => {
+    preloadList.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  });
 
   /* Init */
   document.getElementById('fab').href = wa("Hi Panama Vista Villa! I have a question.");
