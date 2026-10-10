@@ -119,7 +119,7 @@
   }
 
   .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
-  :is(.pill,.btn,.fab,.safari-link-btn,.channel-card,.faq-q,.lb-x):focus-visible { outline:3px solid var(--a1); outline-offset:3px; }
+  :is(.pill,.btn,.fab,.safari-link-btn,.channel-card,.faq-q,.lb-x,.btn-cert):focus-visible { outline:3px solid var(--a1); outline-offset:3px; }
 
   /* ---------- Dock ---------- */
   header { width:100%; position:sticky; top:0; z-index:1000; padding:14px 12px 6px; display:flex; justify-content:center;
@@ -245,6 +245,25 @@
   .safari-link-btn.wa:hover { box-shadow:0 5px 0 var(--wa-d); }
   .safari-soon { display:inline-flex; align-items:center; padding:10px 18px; border-radius:25px; font-size:13px; font-weight:600; color:rgba(255,255,255,.85); border:1px dashed rgba(255,255,255,.6); background:rgba(0,0,0,.25); }
 
+  /* Official Tourism Bureau Credential Banner */
+  .cert-banner { text-align:left; margin:18px 0 24px; padding:20px; border-radius:22px; background:#fff;
+    border:1.5px solid color-mix(in srgb, var(--a1) 28%, var(--edge)); box-shadow:0 6px 18px rgba(0,0,0,.05);
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .cert-content { display:flex; align-items:center; gap:16px; flex:1; min-width:260px; }
+  .cert-badge-ico { display:grid; place-items:center; width:52px; height:52px; border-radius:16px; font-size:26px;
+    background:linear-gradient(135deg, #fef3c7, #fde68a); box-shadow:0 4px 10px rgba(245,158,11,.2); flex-shrink:0; }
+  .cert-text h4 { font-size:16px; font-weight:800; color:var(--a1); margin-bottom:4px; }
+  .cert-text p { font-size:13px; color:var(--muted); line-height:1.45; }
+  .cert-tag { display:inline-block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.4px;
+    padding:3px 8px; border-radius:12px; background:var(--soft); color:var(--a1); margin-bottom:4px; }
+  .btn-cert { display:inline-flex; align-items:center; gap:8px; padding:11px 20px; font:inherit; font-size:13.5px;
+    font-weight:700; border-radius:25px; border:0; color:#fff; cursor:pointer; user-select:none;
+    background:linear-gradient(135deg, var(--a1), color-mix(in srgb, var(--a1) 60%, var(--a2)));
+    box-shadow:0 4px 0 color-mix(in srgb, var(--a1) 75%, #000), 0 8px 16px rgba(15,118,110,.25);
+    transition:transform .28s var(--spring), box-shadow .28s var(--glide); }
+  .btn-cert:hover { transform:translateY(-2px); box-shadow:0 6px 0 color-mix(in srgb, var(--a1) 75%, #000), 0 12px 20px rgba(15,118,110,.32); }
+  .btn-cert:active { transform:translateY(3px); box-shadow:0 1px 0 color-mix(in srgb, var(--a1) 75%, #000); transition-duration:.08s; }
+
   /* Review channels */
   .channel-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin:0 0 22px; text-align:left; }
   .channel-card { --c:#003580; --tint:#eef4fc; display:flex; flex-direction:column; justify-content:space-between; gap:12px; padding:16px; border-radius:20px;
@@ -323,6 +342,9 @@
     .gallery-card .pic { aspect-ratio:16/10; }
     .pill { padding:9px 14px; font-size:13px; }
     .bento { grid-template-columns:1fr 1fr; gap:10px; }
+    .cert-banner { text-align:center; justify-content:center; }
+    .cert-content { flex-direction:column; text-align:center; }
+    .btn-cert { width:100%; justify-content:center; }
   }
   @media (max-width:380px) { .bento { grid-template-columns:1fr; } }
   @media (prefers-reduced-motion: reduce) {
@@ -408,9 +430,9 @@
       heroImg: "hero.jpg", heroAlt: "Panama Vista Villa Entrance",
       quick: [
         "🌴 Quiet Gated Village Property",
+        "🏅 Tourism Bureau Certified Homestay",
         "🏄 10-15 Mins Drive to Local Surf (30 Mins to Arugam Bay)",
-        "❄️ Inverter A/C & Fresh Water Shower",
-        "🚙 Kumana Safari Partner Arranged"
+        "❄️ Inverter A/C & Fresh Water Shower"
       ],
       cards: [
         { img: "guest-welcome.jpg", title: "Warm Hospitality", desc: "Verified guest smiles and relaxed stays at Vista Villa." },
@@ -511,11 +533,12 @@
       title: "Direct Host Reservation",
       tagline: "Book directly with our host family for verified direct rates and zero service commissions.",
       heroImg: "hero.jpg", heroAlt: "Vista Villa Welcome",
+      showCert: true,
       showChannels: true, showFAQ: true,
       quick: [
+        "🏅 Eastern Province Tourism Bureau Certified",
         "⚡ Instant WhatsApp Confirmation from Your Host",
         "💰 Save 15-20% Direct Host Booking Guarantee",
-        "📍 Property ID: 10745472 (Panama Village)",
         "🕒 Flexible Check-In & Free Luggage Drop"
       ],
       cards: [
@@ -589,6 +612,23 @@
             : `<button type="button" class="btn ${a.style}" data-go="${a.key}">${a.label}</button>`).join('')}</div>
         </div>
       </div>`;
+
+    if (c.showCert) {
+      h += `
+      <div class="cert-banner tilt rise">
+        <div class="cert-content">
+          <div class="cert-badge-ico" aria-hidden="true">🏅</div>
+          <div class="cert-text">
+            <span class="cert-tag">Official Tourism Credential</span>
+            <h4>Eastern Province Tourism Bureau Certified</h4>
+            <p>Officially trained &amp; certified in Homestay Unit Management (Eastern Province Tourism Bureau &amp; International Knowledge Pool). Host: S. Niranjala Susiripala.</p>
+          </div>
+        </div>
+        <button type="button" class="btn-cert" data-cert-btn="true">
+          <span>📜 View Official Certificate</span>
+        </button>
+      </div>`;
+    }
 
     if (c.prices) h += `<div class="two">${c.prices.map(p => `
       <div class="price-card tilt rise ${p.featured ? 'featured' : ''}">
@@ -740,12 +780,20 @@
     document.body.classList.remove('no-scroll');
     lastFocus && lastFocus.focus && lastFocus.focus();
   };
-  stage.addEventListener('click', e => {
-    const img = e.target.closest('.pic img.ok'); if (!img) return;
+  const openLb = (src, alt, cap) => {
     lastFocus = document.activeElement;
-    lbimg.src = img.src; lbimg.alt = img.alt; lbcap.textContent = img.alt;
+    lbimg.src = src; lbimg.alt = alt || ''; lbcap.textContent = cap || alt || '';
     lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
     document.body.classList.add('no-scroll'); lbx.focus();
+  };
+  stage.addEventListener('click', e => {
+    const certBtn = e.target.closest('[data-cert-btn]');
+    if (certBtn) {
+      openLb('tourism-certificate.jpg', 'Eastern Province Tourism Bureau & International Knowledge Pool - Certified Home Stay Host', 'Official Certificate: Management of Home Stay Unit Programme (Host: S. Niranjala Susiripala)');
+      return;
+    }
+    const img = e.target.closest('.pic img.ok'); if (!img) return;
+    openLb(img.src, img.alt, img.alt);
   });
   lb.addEventListener('click', closeLb);
   addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) closeLb(); });
@@ -775,7 +823,7 @@
   const preloadList = [
     "hero.jpg", "room1.jpg", "guest-dining.jpg", "living.jpg",
     "guest-welcome.jpg", "garden.jpg", "bath.jpg", "room2.jpg",
-    "veranda.jpg", "breakfast.jpg", "kumana.jpg"
+    "veranda.jpg", "breakfast.jpg", "kumana.jpg", "tourism-certificate.jpg"
   ];
   window.addEventListener('load', () => {
     preloadList.forEach(src => {
