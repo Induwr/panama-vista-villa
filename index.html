@@ -351,6 +351,23 @@
     *, *::before, *::after { animation-duration:.01ms !important; animation-delay:0s !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
     .rise { opacity:1; }
   }
+/* Photo Zoom Hint Badge */
+.hero-photo::after {
+  content: "🔍 Tap to view full";
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
