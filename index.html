@@ -49,7 +49,7 @@
   "image": "hero.jpg",
   "telephone": "+94776457815",
   "email": "panamavistavilla@gmail.com",
-  "priceRange": "LKR 5,000 - 9,000",
+  "priceRange": "LKR 3,500 - 7,000",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Panama Village",
@@ -103,7 +103,7 @@
       radial-gradient(60vmax circle at 5% 0%, color-mix(in srgb, var(--a2) 30%, transparent), transparent 60%),
       radial-gradient(55vmax circle at 100% 100%, color-mix(in srgb, var(--a1) 18%, transparent), transparent 60%); }
 
-  /* පිටුවේ මැදට එන ලොකු Watermark Logo එක */
+  /* Logo watermark */
   body::after {
     content: "";
     position: fixed;
@@ -351,6 +351,7 @@
     *, *::before, *::after { animation-duration:.01ms !important; animation-delay:0s !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
     .rise { opacity:1; }
   }
+
 /* Photo Zoom Hint Badge */
 .hero-photo::after {
   content: "🔍 Tap to view full";
@@ -477,9 +478,9 @@
         "📶 High Speed Wi-Fi Included"
       ],
       prices: [
-        { badge: "Best Comfort", title: "Deluxe A/C Room", amount: 9000, period: "/ night",
+        { badge: "Best Comfort", title: "Deluxe A/C Room", amount: 7000, period: "/ night",
           desc: "Full Inverter A/C cooling, spring mattress, clean white linen, and modern attached private bathroom.", featured: true },
-        { badge: "Budget Friendly", title: "Standard Room (Non-A/C)", amount: 5000, period: "/ night",
+        { badge: "Budget Friendly", title: "Standard Room (Non-A/C)", amount: 3500, period: "/ night",
           desc: "Naturally breezy bedroom with ceiling fan, comfortable spring mattress, and garden view.", featured: false }
       ],
       cards: [
@@ -493,8 +494,8 @@
         { icon: "📶", title: "Free Wi-Fi", desc: "Stay connected smoothly throughout your stay." }
       ],
       actions: [
-        { label: "Book A/C Room (Rs. 9,000)", href: wa("Hi Panama Vista Villa! I'd like to reserve the Deluxe A/C Room (Rs. 9,000)."), style: "btn-whatsapp" },
-        { label: "Book Non-A/C (Rs. 5,000)", href: wa("Hi Panama Vista Villa! I'd like to reserve the Standard Room (Rs. 5,000)."), style: "btn-secondary" }
+        { label: "Book A/C Room (Rs. 7,000)", href: wa("Hi Panama Vista Villa! I'd like to reserve the Deluxe A/C Room (Rs. 7,000)."), style: "btn-whatsapp" },
+        { label: "Book Non-A/C (Rs. 3,500)", href: wa("Hi Panama Vista Villa! I'd like to reserve the Standard Room (Rs. 3,500)."), style: "btn-secondary" }
       ]
     },
     dining: {
@@ -836,7 +837,7 @@
     });
   }
 
-  /* Background Image Preloader (Tabs මාරු කරද්දී Lag වීම නැති කිරීමට) */
+  /* Background Image Preloader */
   const preloadList = [
     "hero.jpg", "room1.jpg", "guest-dining.jpg", "living.jpg",
     "guest-welcome.jpg", "garden.jpg", "bath.jpg", "room2.jpg",
